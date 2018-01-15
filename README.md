@@ -34,13 +34,16 @@ gpasswd -a $USER docker
 
 # Add data disk
 ```
+
+apt-get install xfsprogs
+
 fdisk /dev/sdb
   n
   p
   
-mkfs.ext4 /dev/sdb1
+mkfs.xfs /dev/sdb1
 
 UUID=`blkid /dev/sdb1 | awk -F '"' '{print $2}'`
-echo "UUID=$UUID /data ext4 defaults 0 1" >> /etc/fstab
+echo "UUID=$UUID /data xfs defaults 0 1" >> /etc/fstab
 
 ```
