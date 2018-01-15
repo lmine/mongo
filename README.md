@@ -29,8 +29,11 @@ apt-get update
  
 apt-get install docker-ce
  
-# Add data disk
+gpasswd -a $USER docker
+```
 
+# Add data disk
+```
 fdisk /dev/sdb
   n
   p
